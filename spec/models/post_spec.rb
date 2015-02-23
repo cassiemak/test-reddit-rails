@@ -1,8 +1,13 @@
 require 'rails_helper'
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :truncation
 
 RSpec.describe Post, :type => :model do
   context "trying to make 2 posts within 1 minute" do
     it "should raise error" do
+      DatabaseCleaner.clean
+      
       # Create a user
       user = User.create!(:email => "foo@bar.com", :password => "foobarfoo")
       
@@ -18,6 +23,8 @@ RSpec.describe Post, :type => :model do
 
   context "trying to make more than 20 posts per user" do
     it "should raise error" do
+      DatabaseCleaner.clean
+      
       # Create a user
       user = User.create!(:email => "foo@bar.com", :password => "foobarfoo")
 

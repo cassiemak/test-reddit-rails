@@ -2,11 +2,11 @@ require 'rails_helper'
 require 'database_cleaner'
 
 DatabaseCleaner.strategy = :truncation
-DatabaseCleaner.clean
 
 RSpec.describe PostsController, :type => :controller do
   describe "GET index" do
     it "assigns @teams" do
+      DatabaseCleaner.clean
 
       # Create a user
       user = User.create!(:email => "foo@bar.com", :password => "foobarfoo")
