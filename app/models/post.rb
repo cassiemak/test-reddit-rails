@@ -17,7 +17,7 @@ class Post < ActiveRecord::Base
 
   def post_count
     count = Post.count
-    if count > 20
+    if count >= 20
       self.errors.add(:base, "Cannot posts more than 20 posts")
       self.errors.add(:base, "cat")
 
